@@ -47,5 +47,62 @@ Winal.toGregorian = function(long_count_array){
   return new Date(((days - 2440587.375) * 86400000.0));
 };
 
+Winal.toTzolkin = function(date) {
+  var jd = this.toJulianDay(date);
+  var day_signs = [
+    "Imix",
+    "I'k",
+    "Ak'bal",
+    "Kan",
+    "Chikchan",
+    "Kimi",
+    "Manik'",
+    "Lamat",
+    "Muluk",
+    "Ok",
+    "Chuwen",
+    "Eb",
+    "Ben",
+    "Ix",
+    "Men",
+    "Kib",
+    "Kaban",
+    "Etz'nab",
+    "Kawak",
+    "Ajaw"
+  ];
+  var day_number = (jd + 7) % 13;
+  var day_sign   = day_signs[(jd + 17) % 20];
+  return {day_number: day_number, day_sign: day_sign};
+};
+Winal.toHaab = function(date) {
+  var jd = this.toJulianDay(date);
+  var day_signs = [
+    "Pop",
+    "Wo",
+    "Sip",
+    "Zots",
+    "Sek",
+    "Xul",
+    "Yaxk'in",
+    "Mol",
+    "Che'n",
+    "Yax",
+    "Sak",
+    "Keh",
+    "Mak",
+    "K'ank'in",
+    "Muwan",
+    "Pax",
+    "K'ayab",
+    "Kumk'u",
+    "Kayab"
+  ];
+  var haab_base = (jd + 66) % 365;
+  var day_number = haab_base % 20;
+  var day_sign   = day_signs[Math.floor(haab_base / 20)];
+  return {day_number: day_number, day_sign: day_sign};
+};
+
 exports.WinalUnit = WinalUnit
 exports.Winal     = Winal
