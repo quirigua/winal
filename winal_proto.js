@@ -103,6 +103,13 @@ Winal.toHaab = function(date) {
   var day_sign   = day_signs[Math.floor(haab_base / 20)];
   return {day_number: day_number, day_sign: day_sign};
 };
+Winal.toMayan = function(date){
+	return {
+	  long_count: this.toLongCount(date),
+		haab:       this.toHaab(date),
+		tzolkin:    this.toTzolkin(date)
+	};
+};
 
 exports.WinalUnit = WinalUnit
 exports.Winal     = Winal
