@@ -71,8 +71,8 @@ Winal.toTzolkin = function(date) {
     "Kawak",
     "Ajaw"
   ];
-  var day_number = (jd + 7) % 13;
-  var day_sign   = day_signs[(jd + 17) % 20];
+  var day_number = parseInt((jd + 7) % 13);
+  var day_sign   = day_signs[parseInt((jd + 17) % 20)];
   return {day_number: day_number, day_sign: day_sign};
 };
 Winal.toHaab = function(date) {
@@ -98,8 +98,8 @@ Winal.toHaab = function(date) {
     "Kumk'u",
     "Kayab"
   ];
-  var haab_base = (jd + 66) % 365;
-  var day_number = haab_base % 20;
+  var haab_base = parseInt((jd + 66) % 365);
+  var day_number = parseInt(haab_base % 20);
   var day_sign   = day_signs[Math.floor(haab_base / 20)];
   return {day_number: day_number, day_sign: day_sign};
 };
